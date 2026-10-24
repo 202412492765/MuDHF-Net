@@ -49,10 +49,10 @@ def run(entry):
     if entry == 'pipeline':
         directory = encode(root, args.cohort, output / 'encoder', device, config['encoder'])
     elif entry == 'checkpoint':
-        checkpoint = args.checkpoint or root / 'pretrained' / args.cohort / 'mspae.pth'
+        checkpoint = args.checkpoint or root / 'trained' / args.cohort / 'mspae.pth'
         directory = encode(root, args.cohort, output / 'encoder', device, config['encoder'], checkpoint)
     else:
-        directory = args.representations or root / 'pretrained' / args.cohort / 'representations'
+        directory = args.representations or root / 'trained' / args.cohort / 'representations'
     clinical, folds = load_clinical(root, args.cohort)
     arrays = load_representations(directory, clinical.index)
     selected = yaml.safe_load((root / 'configs' / 'cohorts' / f'{args.cohort}.yaml').read_text(encoding='utf-8'))[args.task]
@@ -61,7 +61,7 @@ def run(entry):
         pairs = [(a, b) for a in search['ranking_weight'] for b in search['tail_weight']]
     else:
         pairs = [(selected['ranking_weight'], selected['tail_weight'])]
-    checkpoints = root / 'pretrained' / args.cohort / args.task if args.mode == 'evaluate' else None
+    checkpoints = root / 'trained' / args.cohort / args.task if args.mode == 'evaluate' else None
     summary = run_downstream(arrays, clinical, folds, args.task, config['hgnn'], device,
                              output / 'prediction', pairs, checkpoints)
     print(f"{args.cohort} {args.task}: {summary['mean']:.10f} +/- {summary['sample_SD']:.10f}", flush=True)

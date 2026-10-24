@@ -19,7 +19,7 @@ configs/           # Training configuration, hyperparameter search range, and se
 data/              # Prepared omics matrices and survival endpoints
 data/masks/        # Methylation observation masks
 splits/            # Fixed five-fold assignments
-pretrained/        # MSPAE weights, four representations, CI/AUC fold checkpoints
+trained/           # MSPAE weights, four representations, CI/AUC fold checkpoints
 src/models/        # MSPAE, HGNN, attention fusion, objectives
 src/utils/         # Data loading, hypergraphs, metrics, deterministic configuration
 src/scripts/       # Three execution entrypoints
