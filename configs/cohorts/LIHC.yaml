@@ -1,0 +1,6 @@
+CI:
+  ranking_weight: 0.1
+  tail_weight: 0.4
+AUC:
+  ranking_weight: 0.3
+  tail_weight: 1.0

@@ -1,0 +1,19 @@
+seed: 42
+encoder:
+  learning_rate: 0.001
+  alignment_weight: 0.3
+  orthogonality_weight: 0.4
+  minimum_epochs: 100
+  patience: 60
+  relative_min_delta: 0.0001
+  absolute_min_delta: 0.00001
+  max_epochs: null
+hgnn:
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  dropout: 0.3
+  neighbors: 10
+  epochs: 2000
+  validation_interval: 10
+  patience: 10
+  tail_mass: 0.2
